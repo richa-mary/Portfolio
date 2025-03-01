@@ -1,0 +1,293 @@
+:root {
+    --neon-green: #00ff88;
+    --deep-space: #0a0a0a;
+}
+/* Particle background removed for better content visibility */
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--deep-space);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Enhanced header with gradient border */
+header {
+    position: fixed;
+    width: 100%;
+    padding: 1.5rem 5%;
+    background: rgba(10, 10, 10, 0.99);
+    /* backdrop-filter: blur(0.1px); */
+    border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+    z-index: 1000;
+}
+
+.nav-links a {
+    position: relative;
+    padding: 0.5rem 1rem;
+    transition: 0.4s;
+}
+.nav-links a:hover {
+    position: relative;
+    padding: 0.5rem 1rem;
+    color: #00ff88;
+    transition: 0.4s;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: var(--neon-green);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Hero section with floating elements */
+.hero {
+    padding: 20vh 10% 10vh;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+}
+
+.hero h1 {
+    font-size: 4rem;
+    background: linear-gradient(to right, #fff 40%, var(--neon-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+}
+.hero h2 {
+    background: linear-gradient(to right, #fff 40%, var(--neon-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Experience timeline with holographic effect */
+.timeline {
+    padding: 8rem 10%;
+    position: relative;
+}
+
+.timeline-item {
+    padding: 3rem;
+    margin: 4rem 0;
+    background-size: cover;
+    background-position: center;
+    border-radius: 1rem;
+    /* display: flex; */
+    /* align-items: flex-end; */
+    overflow: hidden;
+    position: relative;
+    /* background: rgba(255, 255, 255, 0.03);
+    border: 3px solid rgba(0, 255, 136, 0.1);
+    border-radius: 1rem;
+    position: relative; */
+    transition: 0.4s;
+}
+
+.timeline-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.05);
+}
+
+/* Skills matrix with animated bars */
+.skills-matrix {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 5rem 10%;
+}
+
+.skill-card {
+    padding: 2rem;
+    border-radius: 1rem;
+    background: linear-gradient(145deg, rgba(0, 255, 136, 0.1), transparent);
+    position: relative;
+    overflow: hidden;
+}
+/* 
+.skill-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        transparent,
+        var(--neon-green),
+        transparent 30%
+    );
+    animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+    100% { transform: rotate(360deg); }
+} */
+
+/* Language proficiency visualization */
+.language-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 3rem 10%;
+}
+
+.language-card {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 1rem;
+}
+
+/* Hobbies section with parallax cards */
+.hobbies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 5rem 10%;
+}
+
+.hobby-card {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 1rem;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    position: relative;
+}
+
+.hobby-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(transparent 60%, rgba(0,0,0,0.8));
+}
+/* Add this to existing hero styles */
+.hero {
+position: relative;
+min-height: 100vh;
+background: linear-gradient(rgba(10, 10, 10, 0.5), rgba(10, 10, 10, 0.5)),
+        url('./assets/images/propic.jpg') center/cover no-repeat;
+overflow: hidden;
+display: flex;
+align-items: center;
+/* padding: 0 10%; */
+}
+
+/* Add glass effect overlay */
+.hero::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(10, 10, 10, 0.4);
+backdrop-filter: blur(1px);
+z-index: 0;
+}
+
+/* Ensure content stays on top */
+.hero-content {
+position: relative;
+z-index: 1;
+}
+
+/* Update existing header styles */
+header {
+background: transparent;
+position: absolute;
+border-bottom: none;
+}
+
+.nav-links a {
+color: white;
+text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+/* Updated Contact Section */
+#contact {
+padding: 1rem 2rem;
+text-align: center;
+background: rgba(10, 10, 10, 0.95);
+position: relative;
+}
+
+.contact-icons {
+display: flex;
+justify-content: center;
+gap: 2rem;
+flex-wrap: wrap;
+margin-top: 3rem;
+}
+
+.contact-item {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 1.5rem;
+padding: 2rem;
+min-width: 200px;
+transition: transform 0.3s ease;
+}
+
+.contact-item:hover {
+transform: translateY(-10px);
+}
+
+.contact-icon {
+width: 70px;
+height: 70px;
+border-radius: 50%;
+background: rgba(0, 255, 136, 0.1);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.8rem;
+border: 2px solid var(--neon-green);
+}
+
+.contact-info {
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+}
+
+.contact-info a {
+color: white;
+text-decoration: none;
+transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+color: var(--neon-green);
+}
+/* Footer Styles */
+footer {
+background: rgba(10, 10, 10, 0.98);
+padding: 1rem;
+border-top: 1px solid rgba(0, 255, 136, 0.1);
+position: relative;
+overflow: hidden;
+}
+
+.footer-content {
+max-width: 1200px;
+margin: 0 auto;
+text-align: center;
+}
+
+.copyright {
+color: #555;
+font-size: 0.9rem;
+}
