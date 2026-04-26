@@ -1,465 +1,865 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Richa Mary | Energy Operations Analyst</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
-    <style>
-        .gradient-text {
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .hover-scale {
-            transition: transform 0.3s ease;
-        }
-        .hover-scale:hover {
-            transform: translateY(-5px);
-        }
-        .section-divider {
-            height: 2px;
-            background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.5), rgba(59, 130, 246, 0.1));
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Richa Mary — Data Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1a1a;
+  --ink-mid: #555;
+  --ink-light: #999;
+  --cream: #faf9f7;
+  --white: #ffffff;
+  --accent: #2563c4;
+  --accent-light: #e8eef9;
+  --teal: #0d7c66;
+  --teal-light: #e2f5f1;
+  --border: rgba(0,0,0,0.08);
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.25rem 5%;
+  background: rgba(250,249,247,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--accent); }
+
+.nav-cta {
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.55rem 1.25rem;
+  background: var(--accent);
+  color: #fff !important;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.nav-cta:hover { opacity: 0.85; }
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 7rem 5% 4rem;
+  gap: 4rem;
+}
+
+.hero-left { max-width: 560px; }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 0.4rem 0.9rem; border-radius: 100px;
+  margin-bottom: 1.5rem;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+}
+
+.hero-name {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  line-height: 1.08;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.hero-name em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--ink-mid);
+  font-weight: 300;
+  margin-bottom: 2rem;
+  max-width: 440px;
+}
+
+.hero-tags {
+  display: flex; flex-wrap: wrap; gap: 0.6rem;
+  margin-bottom: 2.5rem;
+}
+
+.tag {
+  font-size: 0.78rem; font-weight: 500;
+  padding: 0.35rem 0.85rem; border-radius: 100px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--ink-mid);
+}
+
+.tag-accent { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+.tag-teal { border-color: var(--teal); color: var(--teal); background: var(--teal-light); }
+
+.hero-ctas { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: var(--accent); color: #fff;
+  border-radius: 100px; font-weight: 500; font-size: 0.9rem;
+  text-decoration: none; transition: opacity 0.2s, transform 0.2s;
+}
+.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border: 1px solid var(--border); background: var(--white);
+  color: var(--ink); border-radius: 100px; font-weight: 500; font-size: 0.9rem;
+  text-decoration: none; transition: border-color 0.2s, transform 0.2s;
+}
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+.hero-right {
+  display: flex; flex-direction: column; gap: 1rem; align-items: flex-end;
+}
+
+.hero-photo-card {
+  width: 100%; max-width: 380px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.07);
+}
+
+.hero-photo-card img {
+  width: 100%; height: 340px;
+  object-fit: cover; object-position: top;
+  display: block;
+}
+
+.hero-photo-footer {
+  padding: 1rem 1.25rem;
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid var(--border);
+}
+
+.hero-photo-footer .name-sm {
+  font-weight: 500; font-size: 0.9rem; color: var(--ink);
+}
+.hero-photo-footer .role-sm {
+  font-size: 0.78rem; color: var(--ink-light);
+}
+
+.avail-badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.75rem; font-weight: 500;
+  color: var(--teal); background: var(--teal-light);
+  padding: 0.3rem 0.75rem; border-radius: 100px;
+}
+.avail-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--teal);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* stats strip */
+.stats-strip {
+  width: 100%; max-width: 380px;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px; overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+.stat-item {
+  padding: 1rem 0.75rem; text-align: center;
+  border-right: 1px solid var(--border);
+}
+.stat-item:last-child { border-right: none; }
+.stat-val { font-family: var(--serif); font-size: 1.5rem; color: var(--accent); }
+.stat-lbl { font-size: 0.68rem; color: var(--ink-light); margin-top: 2px; line-height: 1.3; }
+
+/* ─── SECTION COMMONS ─── */
+section { padding: 6rem 5%; }
+section:nth-child(even) { background: var(--white); }
+
+.section-header { margin-bottom: 3.5rem; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.75rem;
+}
+.section-label::before {
+  content: ''; display: block; width: 24px; height: 1.5px; background: var(--accent);
+}
+.section-title {
+  font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 2.8rem);
+  line-height: 1.15; color: var(--ink);
+}
+
+/* ─── IMPACT NUMBERS ─── */
+#impact { background: var(--ink); color: var(--white); }
+#impact .section-label { color: #7fa8f0; }
+#impact .section-label::before { background: #7fa8f0; }
+#impact .section-title { color: var(--white); }
+
+.impact-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5px; background: rgba(255,255,255,0.08);
+  border: 1.5px solid rgba(255,255,255,0.08);
+  border-radius: 16px; overflow: hidden;
+}
+.impact-card {
+  background: var(--ink); padding: 2.5rem 2rem;
+}
+.impact-num {
+  font-family: var(--serif); font-size: 3.2rem;
+  color: #7fa8f0; line-height: 1; margin-bottom: 0.5rem;
+}
+.impact-desc { font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
+.impact-context { font-size: 0.78rem; color: rgba(255,255,255,0.3); margin-top: 0.4rem; }
+
+/* ─── EXPERIENCE ─── */
+.exp-list { display: flex; flex-direction: column; gap: 2rem; }
+
+.exp-card {
+  display: grid; grid-template-columns: 280px 1fr; gap: 3rem;
+  padding: 2.5rem; background: var(--cream);
+  border: 1px solid var(--border); border-radius: 16px;
+  transition: box-shadow 0.25s;
+}
+.exp-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.07); }
+
+.exp-meta {}
+.exp-period {
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink-light); margin-bottom: 0.5rem;
+}
+.exp-role {
+  font-family: var(--serif); font-size: 1.35rem; line-height: 1.2;
+  color: var(--ink); margin-bottom: 0.25rem;
+}
+.exp-company {
+  font-size: 0.9rem; font-weight: 500; color: var(--accent); margin-bottom: 0.5rem;
+}
+.exp-location { font-size: 0.8rem; color: var(--ink-light); }
+
+.exp-highlight {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  margin-top: 1rem;
+  font-size: 0.78rem; font-weight: 500; color: var(--teal);
+  background: var(--teal-light); padding: 0.35rem 0.75rem; border-radius: 100px;
+}
+
+.exp-body {}
+.exp-body ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.exp-body li {
+  display: flex; gap: 0.75rem; font-size: 0.92rem;
+  color: var(--ink-mid); line-height: 1.6;
+}
+.exp-body li::before {
+  content: '→'; color: var(--accent);
+  flex-shrink: 0; margin-top: 0.05rem;
+  font-size: 0.85rem;
+}
+.exp-body li strong { color: var(--ink); font-weight: 500; }
+
+/* ─── SKILLS ─── */
+.skills-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 3rem; align-items: start;
+}
+.skills-intro {
+  font-size: 1.05rem; color: var(--ink-mid); font-weight: 300; line-height: 1.8;
+  margin-bottom: 2rem;
+}
+.skill-group { margin-bottom: 2rem; }
+.skill-group-label {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-light); margin-bottom: 0.75rem;
+}
+.skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.skill-pill {
+  font-size: 0.82rem; font-weight: 400;
+  padding: 0.4rem 0.9rem; border-radius: 100px;
+  border: 1px solid var(--border); background: var(--white); color: var(--ink);
+}
+.skill-pill.primary {
+  border-color: var(--accent); background: var(--accent-light); color: var(--accent); font-weight: 500;
+}
+
+.certifications { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
+.cert-item {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  padding: 1rem 1.25rem; background: var(--cream);
+  border: 1px solid var(--border); border-radius: 10px;
+  font-size: 0.87rem; color: var(--ink-mid);
+}
+.cert-icon { font-size: 1rem; flex-shrink: 0; }
+
+/* ─── PROJECT ─── */
+.project-card {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+  padding: 3rem; background: var(--ink); color: var(--white);
+  border-radius: 20px; overflow: hidden;
+  position: relative;
+}
+.project-card::before {
+  content: '';
+  position: absolute; top: -80px; right: -80px;
+  width: 300px; height: 300px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(37,99,196,0.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+.project-label {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #7fa8f0; margin-bottom: 0.75rem;
+}
+.project-title {
+  font-family: var(--serif); font-size: 1.8rem; line-height: 1.2;
+  color: var(--white); margin-bottom: 1rem;
+}
+.project-desc { font-size: 0.92rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 1.5rem; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.project-tag {
+  font-size: 0.75rem; padding: 0.3rem 0.75rem; border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.7);
+}
+
+.project-roles { display: flex; flex-direction: column; gap: 1.25rem; }
+.project-role-card {
+  padding: 1.25rem; background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08); border-radius: 12px;
+}
+.project-role-name {
+  font-size: 0.78rem; font-weight: 500; color: #7fa8f0; text-transform: uppercase;
+  letter-spacing: 0.06em; margin-bottom: 0.5rem;
+}
+.project-role-desc { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+/* ─── ABOUT / EDUCATION ─── */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+}
+.edu-card {
+  padding: 2rem; background: var(--cream);
+  border: 1px solid var(--border); border-radius: 14px;
+}
+.edu-degree { font-family: var(--serif); font-size: 1.2rem; color: var(--ink); margin-bottom: 0.25rem; }
+.edu-school { font-size: 0.88rem; color: var(--accent); font-weight: 500; margin-bottom: 0.25rem; }
+.edu-meta { font-size: 0.8rem; color: var(--ink-light); margin-bottom: 0.75rem; }
+.edu-badge {
+  display: inline-block; font-size: 0.78rem; font-weight: 500;
+  padding: 0.3rem 0.75rem; background: var(--accent-light); color: var(--accent); border-radius: 100px;
+}
+
+.lang-list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
+.lang-row { display: flex; align-items: center; gap: 1rem; }
+.lang-name { font-size: 0.88rem; font-weight: 500; width: 100px; flex-shrink: 0; }
+.lang-bar-bg {
+  flex: 1; height: 4px; background: var(--border); border-radius: 100px; overflow: hidden;
+}
+.lang-bar { height: 100%; border-radius: 100px; background: var(--accent); }
+.lang-note { font-size: 0.75rem; color: var(--ink-light); width: 80px; text-align: right; }
+
+.currently-building {
+  margin-top: 2rem; padding: 1.5rem;
+  background: var(--accent-light); border-radius: 12px;
+  border-left: 3px solid var(--accent);
+}
+.building-title {
+  font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--accent); margin-bottom: 0.75rem;
+}
+.building-items { display: flex; flex-direction: column; gap: 0.5rem; }
+.building-item { font-size: 0.87rem; color: var(--ink-mid); display: flex; gap: 0.5rem; }
+.building-item::before { content: '◦'; color: var(--accent); }
+
+/* ─── CONTACT ─── */
+#contact { background: var(--cream); }
+.contact-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+}
+.contact-intro { font-size: 1.05rem; color: var(--ink-mid); line-height: 1.8; margin-bottom: 2rem; font-weight: 300; }
+.contact-links { display: flex; flex-direction: column; gap: 1rem; }
+.contact-link {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem 1.25rem; background: var(--white);
+  border: 1px solid var(--border); border-radius: 12px;
+  text-decoration: none; color: var(--ink);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.contact-link:hover { border-color: var(--accent); transform: translateX(4px); }
+.contact-link-icon {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: var(--accent-light); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+}
+.contact-link-text .cl-label { font-size: 0.72rem; color: var(--ink-light); }
+.contact-link-text .cl-val { font-size: 0.9rem; font-weight: 500; }
+
+.germany-card {
+  padding: 2rem; background: var(--white);
+  border: 1px solid var(--border); border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+.germany-flag { font-size: 2rem; margin-bottom: 0.75rem; }
+.germany-title {
+  font-family: var(--serif); font-size: 1.35rem; color: var(--ink); margin-bottom: 0.5rem;
+}
+.germany-desc { font-size: 0.88rem; color: var(--ink-mid); line-height: 1.7; margin-bottom: 1.25rem; }
+.germany-items { display: flex; flex-direction: column; gap: 0.5rem; }
+.germany-item {
+  display: flex; align-items: center; gap: 0.75rem;
+  font-size: 0.85rem; color: var(--ink-mid);
+}
+.germany-item::before { content: '✓'; color: var(--teal); font-weight: 600; }
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 2rem 5%; background: var(--ink); color: rgba(255,255,255,0.35);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.8rem;
+}
+footer a { color: rgba(255,255,255,0.35); text-decoration: none; }
+footer a:hover { color: rgba(255,255,255,0.7); }
+.footer-logo { font-family: var(--serif); color: rgba(255,255,255,0.6); font-size: 1rem; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 860px) {
+  #hero { grid-template-columns: 1fr; padding: 6rem 5% 4rem; }
+  .hero-right { align-items: center; }
+  .hero-photo-card, .stats-strip { max-width: 100%; }
+  .exp-card { grid-template-columns: 1fr; gap: 1.5rem; }
+  .skills-layout, .about-grid, .contact-layout { grid-template-columns: 1fr; }
+  .project-card { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+
+/* ─── FADE-IN ANIMATION ─── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
-    <!-- Navigation -->
-    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex-shrink-0 flex items-center">
-                    <span class="text-xl font-bold gradient-text">Richa Mary</span>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-center space-x-8">
-                        <a href="#hero" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
-                        <a href="#experience" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Experience</a>
-                        <a href="#skills" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
-                        <a href="#education" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Education</a>
-                        <a href="#contact" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
-                    </div>
-                </div>
-                <div class="md:hidden">
-                    <button class="mobile-menu-button p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100">
-                        <i data-feather="menu"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
+<body>
 
-    <!-- Hero Section -->
-    <section id="hero" class="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center justify-between">
-                <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Richa Mary</h1>
-                    <h2 class="text-2xl md:text-3xl font-semibold text-blue-600 mb-6">Energy Operations Analyst</h2>
-                    <p class="text-gray-600 mb-8 max-w-lg">
-                        LE30DT, Leicester, UK<br>
-                        +44 7741 609983<br>
-                        richamary6@gmail.com
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors hover-scale">
-                            Contact Me
-                        </a>
-                        <a href="https://www.linkedin.com/in/richa-mary-bba672212/" target="_blank" class="border border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition-colors hover-scale flex items-center">
-                            <i data-feather="linkedin" class="mr-2"></i> LinkedIn
-                        </a>
-                    </div>
-                </div>
-                <div class="md:w-1/2" data-aos="fade-left">
-                    <div class="bg-white p-6 rounded-xl shadow-lg max-w-md mx-auto">
-                        <img src="./assets/images/propic.jpg" alt="Professional Portrait" class="rounded-lg w-full h-auto">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Richa Mary</a>
+  <ul class="nav-links">
+    <li><a href="#impact">Results</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#project">Project</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in touch</a>
+</nav>
 
-    <!-- Experience Section -->
-    <section id="experience" class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-bold mb-4">Professional Journey</h2>
-                <div class="section-divider w-24 mx-auto my-4"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto">My career path through energy operations and systems engineering</p>
-            </div>
-            
-            <div class="space-y-12">
-                <!-- Current Job -->
-                <div class="flex flex-col md:flex-row gap-8" data-aos="fade-up">
-                    <div class="md:w-1/3">
-                        <div class="bg-blue-50 p-6 rounded-xl h-full">
-                            <h3 class="text-xl font-bold text-blue-700 mb-2">Energy Specialist</h3>
-                            <p class="text-gray-600 font-medium mb-2">Outfox The Market</p>
-                            <p class="text-gray-500 text-sm">May 2024 - Present | Leicester, UK</p>
-                        </div>
-                    </div>
-                    <div class="md:w-2/3">
-                        <div class="bg-gray-50 p-6 rounded-xl">
-                            <ul class="space-y-3">
-                                <li class="flex items-start">
-                                    <i data-feather="check-circle" class="text-green-500 mr-3 mt-1 flex-shrink-0"></i>
-                                    <span>Managed £2M+ energy transactions with 100% accuracy</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-feather="check-circle" class="text-green-500 mr-3 mt-1 flex-shrink-0"></i>
-                                    <span>Reduced operational costs by 15% through process optimization</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-feather="check-circle" class="text-green-500 mr-3 mt-1 flex-shrink-0"></i>
-                                    <span>Implemented automated settlement processes saving 20hrs/week</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-feather="check-circle" class="text-green-500 mr-3 mt-1 flex-shrink-0"></i>
-                                    <span>Developed audit-ready documentation for energy settlements</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Previous Job -->
-                <div class="flex flex-col md:flex-row gap-8" data-aos="fade-up">
-                    <div class="md:w-1/3">
-                        <div class="bg-purple-50 p-6 rounded-xl h-full">
-                            <h3 class="text-xl font-bold text-purple-700 mb-2">Systems Engineer</h3>
-                            <p class="text-gray-600 font-medium mb-2">Infosys</p>
-                            <p class="text-gray-500 text-sm">Aug 2022 - Apr 2024 | Trivandrum, India</p>
-                        </div>
-                    </div>
-                    <div class="md:w-2/3">
-                        <div class="bg-gray-50 p-6 rounded-xl">
-                            <ul class="space-y-3">
-                                <li class="flex items-start">
-                                    <i data-feather="check-circle" class="text-purple-500 mr-3 mt-1 flex-shrink-0"></i>
-                                    <span>Developed 15+ web applications using ASP.NET Core</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-feather="check-circle" class="text-purple-500 mr-3 mt-1 flex-shrink-0"></i>
-                                    <span>Integrated Kibana/Elasticsearch reducing issue resolution time by 40%</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-feather="check-circle" class="text-purple-500 mr-3 mt-1 flex-shrink-0"></i>
-                                    <span>Created Grafana alert system reducing downtime by 30%</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-feather="check-circle" class="text-purple-500 mr-3 mt-1 flex-shrink-0"></i>
-                                    <span>Built RESTful APIs improving system communication efficiency</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left fade-up">
+    <div class="hero-eyebrow">Available for roles in Germany</div>
+    <h1 class="hero-name">Richa<br><em>Mary</em></h1>
+    <p class="hero-sub">Data Analyst turning operational data into decisions that drive measurable improvement — in energy, tech, and beyond.</p>
+    <div class="hero-tags">
+      <span class="tag tag-accent">Data Analysis</span>
+      <span class="tag tag-accent">Business Intelligence</span>
+      <span class="tag tag-teal">Process Optimisation</span>
+      <span class="tag">SQL · Excel · Power BI</span>
+      <span class="tag">German A2 🇩🇪</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Contact me</a>
+      <a href="https://www.linkedin.com/in/richa-mary-bba672212/" target="_blank" class="btn-secondary">LinkedIn ↗</a>
+      <a href="https://richa-mary.github.io/Portfolio/home" target="_blank" class="btn-secondary">GitHub ↗</a>
+    </div>
+  </div>
+  <div class="hero-right fade-up" style="transition-delay:0.15s">
+    <div class="hero-photo-card">
+      <img src="./assets/images/propic.jpg" alt="Richa Mary — Data Analyst">
+      <div class="hero-photo-footer">
+        <div>
+          <div class="name-sm">Richa Mary</div>
+          <div class="role-sm">Data Analyst · Leicester, UK</div>
         </div>
-    </section>
+        <div class="avail-badge"><span class="avail-dot"></span>Open to relocate</div>
+      </div>
+    </div>
+    <div class="stats-strip">
+      <div class="stat-item">
+        <div class="stat-val">3+</div>
+        <div class="stat-lbl">Years experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">+9pp</div>
+        <div class="stat-lbl">Performance gain delivered</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">97%</div>
+        <div class="stat-lbl">Settlement accuracy</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-bold mb-4">Skills & Expertise</h2>
-                <div class="section-divider w-24 mx-auto my-4"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto">The technical and interpersonal skills I bring to every project</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Core Programming -->
-                <div class="bg-white p-6 rounded-xl shadow-sm hover-scale" data-aos="zoom-in">
-                    <div class="text-blue-600 mb-4">
-                        <i data-feather="code" class="w-10 h-10"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Core Programming</h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li class="flex items-center">
-                            <i data-feather="chevron-right" class="text-blue-500 mr-2"></i>
-                            <span>C#</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="chevron-right" class="text-blue-500 mr-2"></i>
-                            <span>Java</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="chevron-right" class="text-blue-500 mr-2"></i>
-                            <span>C++</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="chevron-right" class="text-blue-500 mr-2"></i>
-                            <span>ASP.NET Core</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Data Analysis -->
-                <div class="bg-white p-6 rounded-xl shadow-sm hover-scale" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="text-purple-600 mb-4">
-                        <i data-feather="bar-chart-2" class="w-10 h-10"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Data Analysis</h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li class="flex items-center">
-                            <i data-feather="chevron-right" class="text-purple-500 mr-2"></i>
-                            <span>SQL</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="chevron-right" class="text-purple-500 mr-2"></i>
-                            <span>Excel</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="chevron-right" class="text-purple-500 mr-2"></i>
-                            <span>Power BI</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Web Development -->
-                <div class="bg-white p-6 rounded-xl shadow-sm hover-scale" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="text-green-600 mb-4">
-                        <i data-feather="globe" class="w-10 h-10"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Web Development</h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li class="flex items-center">
-                            <i data-feather="chevron-right" class="text-green-500 mr-2"></i>
-                            <span>Angular</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="chevron-right" class="text-green-500 mr-2"></i>
-                            <span>.NET</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="chevron-right" class="text-green-500 mr-2"></i>
-                            <span>RESTful APIs</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="chevron-right" class="text-green-500 mr-2"></i>
-                            <span>Basic HTML</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="chevron-right" class="text-green-500 mr-2"></i>
-                            <span>Kibana/Grafana</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Soft Skills -->
-                <div class="bg-white p-6 rounded-xl shadow-sm hover-scale" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="text-yellow-600 mb-4">
-                        <i data-feather="users" class="w-10 h-10"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Soft Skills</h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li class="flex items-center">
-                            <i data-feather="chevron-right" class="text-yellow-500 mr-2"></i>
-                            <span>Communication</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="chevron-right" class="text-yellow-500 mr-2"></i>
-                            <span>Adaptability</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="chevron-right" class="text-yellow-500 mr-2"></i>
-                            <span>Customer Relationship Management</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="chevron-right" class="text-yellow-500 mr-2"></i>
-                            <span>Team Player</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+<!-- IMPACT -->
+<section id="impact">
+  <div class="section-header fade-up">
+    <div class="section-label">Key results</div>
+    <h2 class="section-title">Impact by the numbers</h2>
+  </div>
+  <div class="impact-grid fade-up">
+    <div class="impact-card">
+      <div class="impact-num">81→90%</div>
+      <div class="impact-desc">Smart meter communication performance</div>
+      <div class="impact-context">Achieved through SQL-driven failure pattern analysis at Outfox Energy</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-num">97%</div>
+      <div class="impact-desc">Settlement process accuracy rate</div>
+      <div class="impact-context">Maintained across complex, regulated energy market operations</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-num">SQL</div>
+      <div class="impact-desc">Automated recurring reports</div>
+      <div class="impact-context">Replaced manual workflows, improving consistency and reducing effort</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-num">3+</div>
+      <div class="impact-desc">Years bridging data and business</div>
+      <div class="impact-context">Across energy operations and enterprise IT delivery</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header fade-up">
+    <div class="section-label">Career</div>
+    <h2 class="section-title">Professional experience</h2>
+  </div>
+  <div class="exp-list">
+    <div class="exp-card fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">May 2024 – Present</div>
+        <div class="exp-role">Data Analyst</div>
+        <div class="exp-company">Outfox Energy</div>
+        <div class="exp-location">Leicester, UK</div>
+        <div class="exp-highlight">Smart metering & settlement</div>
+      </div>
+      <div class="exp-body">
+        <ul>
+          <li>Analysed large-scale smart metering datasets in <strong>SQL</strong> to identify communication failure patterns, driving a <strong>9 percentage-point improvement</strong> in network performance (81% → 90%)</li>
+          <li>Built SQL-based automations replacing manual reporting workflows, improving data consistency across operations teams</li>
+          <li>Managed end-to-end energy market settlement processes, maintaining a <strong>97% accuracy rate</strong> in a regulated environment</li>
+          <li>Defined and tracked <strong>KPIs</strong> for process improvement initiatives, presenting progress against baselines to senior stakeholders and cross-functional teams</li>
+          <li>Detected and resolved settlement discrepancies early, mitigating financial risk in regulated energy operations</li>
+          <li>Used <strong>Power BI</strong> and Excel to surface operational data trends, enabling faster intervention decisions</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-card fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">Aug 2022 – Apr 2024</div>
+        <div class="exp-role">Systems Engineer</div>
+        <div class="exp-company">Infosys</div>
+        <div class="exp-location">India</div>
+        <div class="exp-highlight">Data & backend delivery</div>
+      </div>
+      <div class="exp-body">
+        <ul>
+          <li>Wrote and optimised <strong>SQL queries</strong> supporting data extraction, transformation, and reporting across enterprise systems</li>
+          <li>Designed <strong>RESTful APIs</strong> with validation logic, ensuring data accuracy and system reliability across integrated platforms</li>
+          <li>Integrated Kibana & Elasticsearch for real-time log monitoring, reducing issue resolution time</li>
+          <li>Gathered and translated business requirements into technical specifications, working directly with stakeholders in <strong>Agile / Scrum</strong> teams</li>
+          <li>Evaluated new technologies and provided structured assessments to support team adoption decisions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header fade-up">
+    <div class="section-label">Capabilities</div>
+    <h2 class="section-title">Skills & tools</h2>
+  </div>
+  <div class="skills-layout fade-up">
+    <div>
+      <p class="skills-intro">I focus on the tools that make a tangible difference in analyst roles — turning raw data into insight, and insight into action.</p>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Data & Analytics</div>
+        <div class="skill-pills">
+          <span class="skill-pill primary">SQL</span>
+          <span class="skill-pill primary">Advanced Excel</span>
+          <span class="skill-pill primary">Power BI</span>
+          <span class="skill-pill">PivotTables</span>
+          <span class="skill-pill">Macros</span>
+          <span class="skill-pill">ETL</span>
+          <span class="skill-pill">Data modelling</span>
         </div>
-    </section>
+      </div>
 
-    <!-- Education Section -->
-    <section id="education" class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-bold mb-4">Academic Foundation</h2>
-                <div class="section-divider w-24 mx-auto my-4"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto">My educational background and language proficiency</p>
-            </div>
-            
-            <div class="flex flex-col md:flex-row gap-8 items-center">
-                <div class="md:w-1/2" data-aos="fade-right">
-                    <div class="bg-blue-50 p-8 rounded-xl">
-                        <h3 class="text-2xl font-bold text-blue-700 mb-4">Bachelor of Technology in Civil Engineering</h3>
-                        <p class="text-gray-600 font-medium mb-2">Mar Baselios College of Engineering & Technology</p>
-                        <p class="text-gray-500 mb-4">Aug 2018 - Jul 2022 | Kerala, India</p>
-                        <div class="flex items-center">
-                            <div class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-bold">
-                                Score: 8.45
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="md:w-1/2" data-aos="fade-left">
-                    <div class="space-y-6">
-                        <div class="bg-gray-50 p-6 rounded-xl">
-                            <h4 class="text-xl font-bold mb-3">Language Proficiency</h4>
-                            <div class="space-y-4">
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span class="font-medium">English (Advanced - C1)</span>
-                                        <span class="text-blue-600 font-bold">IELTS 8.0</span>
-                                    </div>
-                                    <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                        <div class="bg-blue-600 h-2.5 rounded-full" style="width: 90%"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span class="font-medium">Malayalam (Native)</span>
-                                    </div>
-                                    <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                        <div class="bg-purple-600 h-2.5 rounded-full" style="width: 100%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-gray-50 p-6 rounded-xl">
-                            <h4 class="text-xl font-bold mb-3">Personal Interests</h4>
-                            <div class="flex flex-wrap gap-3">
-                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Technical Reading</span>
-                                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Film Analysis</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Process & Methodology</div>
+        <div class="skill-pills">
+          <span class="skill-pill primary">KPI definition & tracking</span>
+          <span class="skill-pill">Process analysis</span>
+          <span class="skill-pill">Requirements gathering</span>
+          <span class="skill-pill">Agile / Scrum</span>
+          <span class="skill-pill">Stakeholder reporting</span>
         </div>
-    </section>
+      </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-900 text-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-bold mb-4">Get in Touch</h2>
-                <div class="section-divider w-24 mx-auto my-4 bg-white/30"></div>
-                <p class="text-gray-300 max-w-2xl mx-auto">Let's connect and discuss potential opportunities</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div data-aos="fade-right">
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="bg-blue-600 p-3 rounded-full mr-4">
-                                <i data-feather="mail" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg mb-1">Email</h4>
-                                <a href="mailto:richamary6@gmail.com" class="text-blue-300 hover:text-blue-200 transition-colors">richamary6@gmail.com</a>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="bg-purple-600 p-3 rounded-full mr-4">
-                                <i data-feather="phone" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg mb-1">Phone</h4>
-                                <a href="tel:+447741609983" class="text-purple-300 hover:text-purple-200 transition-colors">+44 7741 609983</a>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="bg-blue-500 p-3 rounded-full mr-4">
-                                <i data-feather="linkedin" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg mb-1">LinkedIn</h4>
-                                <a href="https://www.linkedin.com/in/richa-mary-bba672212/" target="_blank" class="text-blue-300 hover:text-blue-200 transition-colors">linkedin.com/in/richa-mary</a>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="bg-gray-600 p-3 rounded-full mr-4">
-                                <i data-feather="map-pin" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg mb-1">Location</h4>
-                                <p class="text-gray-300">LE30DT, Leicester, United Kingdom</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div data-aos="fade-left">
-                    <form class="bg-gray-800 p-8 rounded-xl">
-                        <div class="mb-6">
-                            <label for="name" class="block text-sm font-medium mb-2">Your Name</label>
-                            <input type="text" id="name" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-gray-400">
-                        </div>
-                        <div class="mb-6">
-                            <label for="email" class="block text-sm font-medium mb-2">Email Address</label>
-                            <input type="email" id="email" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-gray-400">
-                        </div>
-                        <div class="mb-6">
-                            <label for="message" class="block text-sm font-medium mb-2">Message</label>
-                            <textarea id="message" rows="4" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-gray-400"></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors hover-scale flex items-center justify-center">
-                            <i data-feather="send" class="mr-2"></i> Send Message
-                        </button>
-                    </form>
-                </div>
-            </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Tools & Collaboration</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Jira</span>
+          <span class="skill-pill">Confluence</span>
+          <span class="skill-pill">Kibana</span>
+          <span class="skill-pill">Elasticsearch</span>
+          <span class="skill-pill">REST APIs</span>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-300 py-8">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <span class="text-xl font-bold gradient-text">Richa Mary</span>
-                </div>
-                <div class="flex space-x-6">
-                    <a href="https://www.linkedin.com/in/richa-mary-bba672212/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
-                        <i data-feather="linkedin" class="w-5 h-5"></i>
-                    </a>
-                    <a href="mailto:richamary6@gmail.com" class="text-gray-400 hover:text-white transition-colors">
-                        <i data-feather="mail" class="w-5 h-5"></i>
-                    </a>
-                    <a href="tel:+447741609983" class="text-gray-400 hover:text-white transition-colors">
-                        <i data-feather="phone" class="w-5 h-5"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="mt-8 text-center text-sm">
-                <p>© 2025 Richa Mary. All rights reserved.</p>
-            </div>
+    <div>
+      <div class="skill-group-label" style="margin-bottom:1rem">Certifications</div>
+      <div class="certifications">
+        <div class="cert-item">
+          <span class="cert-icon">📊</span>
+          Business Analytics with Excel — Simplilearn
         </div>
-    </footer>
+        <div class="cert-item">
+          <span class="cert-icon">⚙️</span>
+          Infosys Certified .NET Core Web API Developer
+        </div>
+      </div>
 
-    <script>
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu-button').addEventListener('click', function() {
-            // Implement mobile menu functionality here
-            alert('Mobile menu would open here in a full implementation');
-        });
-        
-        // Initialize animations
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
-        });
-        
-        // Feather icons
-        feather.replace();
-    </script>
+      <div class="skill-group-label" style="margin-top:2rem; margin-bottom:1rem">Languages</div>
+      <div class="lang-list">
+        <div class="lang-row">
+          <span class="lang-name">English</span>
+          <div class="lang-bar-bg"><div class="lang-bar" style="width:95%"></div></div>
+          <span class="lang-note">Fluent · IELTS 8.0</span>
+        </div>
+        <div class="lang-row">
+          <span class="lang-name">Malayalam</span>
+          <div class="lang-bar-bg"><div class="lang-bar" style="width:100%; background:var(--teal)"></div></div>
+          <span class="lang-note">Native</span>
+        </div>
+        <div class="lang-row">
+          <span class="lang-name">German 🇩🇪</span>
+          <div class="lang-bar-bg"><div class="lang-bar" style="width:20%; background:#e58c1a"></div></div>
+          <span class="lang-note">A2 — learning</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT -->
+<section id="project" style="background:var(--white)">
+  <div class="section-header fade-up">
+    <div class="section-label">Featured work</div>
+    <h2 class="section-title">EcoWatt Energy Application</h2>
+  </div>
+  <div class="project-card fade-up">
+    <div>
+      <div class="project-label">Personal project · 2024</div>
+      <h3 class="project-title">End-to-end energy analytics application</h3>
+      <p class="project-desc">Designed and built a complete energy management platform covering customer usage tracking, tariff comparison, quote generation, and profitability reporting. Acting as both Business Analyst and developer, I defined requirements, designed the data model, and built the full stack.</p>
+      <div class="project-tags">
+        <span class="project-tag">SQL Server</span>
+        <span class="project-tag">.NET Core API</span>
+        <span class="project-tag">Angular</span>
+        <span class="project-tag">Data modelling</span>
+        <span class="project-tag">Dashboard design</span>
+        <span class="project-tag">Requirements analysis</span>
+      </div>
+    </div>
+    <div class="project-roles">
+      <div class="project-role-card">
+        <div class="project-role-name">As Business Analyst</div>
+        <div class="project-role-desc">Defined end-to-end requirements, mapped user journeys for quote generation, tariff browsing and usage tracking, identified data entities and relationships to support all use cases.</div>
+      </div>
+      <div class="project-role-card">
+        <div class="project-role-name">As Data Engineer</div>
+        <div class="project-role-desc">Designed the full relational database schema in SQL Server — normalised tables with foreign key constraints — ensuring both operational and analytical queries could be served efficiently.</div>
+      </div>
+      <div class="project-role-card">
+        <div class="project-role-name">As Developer</div>
+        <div class="project-role-desc">Built the .NET Core API layer, Angular frontend, and usage visualisation dashboards — simulating a real-world BI pipeline from raw data to business insight.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / EDUCATION -->
+<section id="about">
+  <div class="section-header fade-up">
+    <div class="section-label">Background</div>
+    <h2 class="section-title">Education & profile</h2>
+  </div>
+  <div class="about-grid fade-up">
+    <div>
+      <div class="edu-card">
+        <div class="edu-degree">Bachelor of Technology — Civil Engineering</div>
+        <div class="edu-school">Mar Baselios College of Engineering, India</div>
+        <div class="edu-meta">Aug 2018 – Aug 2022</div>
+        <span class="edu-badge">CGPA 8.45 / 10</span>
+      </div>
+
+      <div class="currently-building">
+        <div class="building-title">Currently building</div>
+        <div class="building-items">
+          <div class="building-item">Power BI dashboards — end-to-end data visualisation case studies</div>
+          <div class="building-item">Data analysis portfolio projects for GitHub</div>
+          <div class="building-item">German language — progressing A2 toward B1</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:1rem; color:var(--ink-mid); line-height:1.8; font-weight:300; margin-bottom:1.5rem">
+        I'm a data analyst based in Leicester, UK, actively planning to relocate to Germany. I combine technical depth — SQL, Excel, Power BI, APIs — with strong business instinct, having worked in both regulated energy operations and enterprise IT delivery.
+      </p>
+      <p style="font-size:1rem; color:var(--ink-mid); line-height:1.8; font-weight:300">
+        I'm particularly drawn to roles in the energy, utilities, and tech/consulting sectors in Germany, where I can apply my operational analysis background to drive data-informed improvements. I'm self-driven, adapt quickly to new tools and domains, and communicate findings clearly to both technical and non-technical audiences.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header fade-up">
+    <div class="section-label">Get in touch</div>
+    <h2 class="section-title">Let's talk</h2>
+  </div>
+  <div class="contact-layout fade-up">
+    <div>
+      <p class="contact-intro">I'm actively looking for Data Analyst and Business Intelligence Analyst roles in Germany. If you have an opportunity or just want to connect, I'd love to hear from you.</p>
+      <div class="contact-links">
+        <a href="mailto:richamary6@gmail.com" class="contact-link">
+          <div class="contact-link-icon">✉</div>
+          <div class="contact-link-text">
+            <div class="cl-label">Email</div>
+            <div class="cl-val">richamary6@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/richa-mary-bba672212/" target="_blank" class="contact-link">
+          <div class="contact-link-icon">in</div>
+          <div class="contact-link-text">
+            <div class="cl-label">LinkedIn</div>
+            <div class="cl-val">linkedin.com/in/richa-mary</div>
+          </div>
+        </a>
+        <a href="https://richa-mary.github.io/Portfolio/home" target="_blank" class="contact-link">
+          <div class="contact-link-icon">gh</div>
+          <div class="contact-link-text">
+            <div class="cl-label">Portfolio & GitHub</div>
+            <div class="cl-val">richa-mary.github.io</div>
+          </div>
+        </a>
+        <a href="tel:+447741609983" class="contact-link">
+          <div class="contact-link-icon">☎</div>
+          <div class="contact-link-text">
+            <div class="cl-label">Phone</div>
+            <div class="cl-val">+44 7741 609 983</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="germany-card">
+      <div class="germany-flag">🇩🇪</div>
+      <h3 class="germany-title">Relocating to Germany</h3>
+      <p class="germany-desc">I'm actively planning my move to Germany and open to roles across the country, with particular interest in the energy, utilities, and tech/consulting sectors.</p>
+      <div class="germany-items">
+        <div class="germany-item">Open to full relocation — flexible on city</div>
+        <div class="germany-item">German A2 — actively learning, progressing toward B1</div>
+        <div class="germany-item">Available for remote interviews immediately</div>
+        <div class="germany-item">EU/UK — willing to discuss visa requirements</div>
+        <div class="germany-item">Interested in Energy, Utilities, Tech, Consulting</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Richa Mary</span>
+  <span>Data Analyst · richamary6@gmail.com</span>
+  <span>© 2025</span>
+</footer>
+
+<script>
+// Fade-up on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Trigger hero immediately
+document.querySelectorAll('#hero .fade-up').forEach(el => {
+  setTimeout(() => el.classList.add('visible'), 100);
+});
+</script>
 </body>
 </html>
-
